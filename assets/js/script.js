@@ -1,14 +1,11 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 $(document).ready(function () {
 
   var saveButton = $(".saveBtn");
 
   saveButton.on("click", function () {
-    var textEl = $(this).parent().children("description").val();
+    var textEl = $(this).parent().children(".description").val();
     var timeEl = $(this).parent().attr("id");
-    localStorage.setItem(textEl, timeEl);
+    localStorage.setItem(timeEl, textEl);
   })
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -23,13 +20,14 @@ $(document).ready(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
-  var currentTime = dayjs().format("HH");
+  var currentTime = dayjs().hour();
   console.log(currentTime);
 
 
-  $(".timeBlock").each(function() {
+  $(".time-block").each(function () {
     var hourBlock = parseInt($(this).attr("id").slice(5));
     console.log(hourBlock);
+    $(this).children(".description").val(localStorage.getItem($(this).attr("id")));
 
     if (currentTime === hourBlock) {
       $(this).addClass("present");
@@ -49,4 +47,5 @@ $(document).ready(function () {
 
   var currentDay = dayjs();
   $("#currentDay").text(currentDay.format("MMMM D, YYYY HH:mm"));
+
 });
