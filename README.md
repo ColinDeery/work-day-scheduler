@@ -1,5 +1,7 @@
 # Work Day Scheduler
 
+https://colindeery.github.io/work-day-scheduler/
+
 ## Description
 
 This simple workday scheduler app allows the user to view their workday in hour blocks as well as keep track of their meetings and appointments.
